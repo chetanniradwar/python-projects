@@ -1,5 +1,5 @@
 import turtle
-
+import random as rnd
 t = turtle.Turtle()
 
 t.speed(0)
@@ -12,6 +12,10 @@ def draw_circle(radius):
     t.left(90)
     t.pendown()
 
+    r = rnd.random()
+    g = rnd.random()
+    b = rnd.random()
+    t.pencolor((r,g,b))
     # circle
     t.circle(radius)
 
