@@ -3,6 +3,7 @@ from turtle import Screen
 import random
 game_screen = Screen()
 
+game_screen.setup(600, 600)
 game_screen.screensize(200, 200, "black")
 game_screen.title("THE SNAKE GAME")
 
@@ -39,7 +40,15 @@ pre_pos = calculate_prey_pos()
 
 food.setposition(pre_pos)
 
+print(game_screen.window_height() , game_screen.window_width())
 
+def does_wall_cross(xcor, ycor, screen):
+    if (xcor >= (screen.window_width() / 2 - 5) or xcor <= -(screen.window_width()/2 + 5)):
+        return True
+    if(ycor >= (screen.window_height() / 2 - 5) or ycor <= -(screen.window_height()/2 + 5)):
+        return True
+
+    return False
 
 
 def move_left():
@@ -96,14 +105,20 @@ while not_game_over:
     empty_pos = head.pos()
     head.forward(10)
 
+    if does_wall_cross(head.xcor(), head.ycor(), game_screen):
+        print("GAME OVER")
+        not_game_over = False
+        print(head.xcor(), head.ycor(),game_screen.window_width(), game_screen.window_height())
+        break
+
     for body in body_list:
         if head.pos() == body.pos():
             print("GAME OVER")
             not_game_over = False
             break
     
+
     for body in body_list:
-        
         to_be_empty = body.pos()
         body.setpos(empty_pos)
         empty_pos = to_be_empty
