@@ -42,7 +42,15 @@ class Dice(Turtle):
         
         return False
 
+    def dice_missed_left_paddle(self, paddle):
+        if self.xcor() < paddle.xcor():
+            return True
+        return False
 
+    def dice_missed_right_paddle(self, paddle):
+        if self.xcor() > paddle.xcor():
+            return True
+        return False
 
 
 
