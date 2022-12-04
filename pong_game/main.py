@@ -2,7 +2,10 @@ from dice import Dice
 from turtle import Screen
 from paddle import Paddle
 import random
+import time
+
 screen = Screen()
+screen.tracer(0)
 screen.bgcolor("black")
 screen.setup(1000, 600)
 dice = Dice()
@@ -26,7 +29,9 @@ dice.setheading(start_angle)
 
 dice.speed(0)
 while 1:
-    dice.forward(20)
+    
+    screen.update()
+    dice.forward(5)
     dice.reflect_the_dice(left_paddle, right_paddle)
     
    

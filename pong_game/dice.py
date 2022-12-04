@@ -29,14 +29,14 @@ class Dice(Turtle):
         self.speed(6)
 
     def dice_hits_left_paddle(self, paddle):
-        if self.xcor() == (paddle.xcor() + 20):
+        if self.xcor() <= (paddle.xcor() + 20):
             if (paddle.ycor()+ 20) > self.ycor() > (paddle.ycor() -  20):
                 return True
             
         return False
 
     def dice_hits_right_paddle(self, paddle):
-        if self.xcor() == (paddle.xcor() - 30):
+        if self.xcor() >= (paddle.xcor() - 30):
             if (paddle.ycor()+ 20) > self.ycor() > (paddle.ycor() -  20):
                 return True
         
